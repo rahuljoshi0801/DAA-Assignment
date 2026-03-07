@@ -19,57 +19,36 @@ Input: Output:
 305534721034 1089 11 30 69 51
 */
 #include <iostream>
-#include <vector>
-#include <unordered_map>
 using namespace std;
 
 int main() {
-    int T;
-    cin >> T;
+    int m, n;
 
-    while (T--) {
-        int n;
-        cin >> n;
+    cin >> m;
+    int A[m];
+    for(int i = 0; i < m; i++) {
+        cin >> A[i];
+    }
 
-        vector<int> arr(n);
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
+    cin >> n;
+    int B[n];
+    for(int i = 0; i < n; i++) {
+        cin >> B[i];
+    }
+
+    int i = 0, j = 0;
+
+    while(i < m && j < n) {
+        if(A[i] == B[j]) {
+            cout << A[i] << " ";
+            i++;
+            j++;
         }
-
-        int key;
-        cin >> key;
-
-        unordered_map<int, int> freq;
-
-        // Step 1: Build frequency map
-        for (int i = 0; i < n; i++) {
-            freq[arr[i]]++;
+        else if(A[i] < B[j]) {
+            i++;
         }
-
-        bool found = false;
-
-        // Step 2: Check for valid pair
-        for (int i = 0; i < n; i++) {
-            int x = arr[i];
-            int complement = key - x;
-
-            if (freq.find(complement) != freq.end()) {
-
-                if (x != complement) {
-                    cout << x << " " << complement << endl;
-                    found = true;
-                    break;
-                }
-                else if (x == complement && freq[x] >= 2) {
-                    cout << x << " " << complement << endl;
-                    found = true;
-                    break;
-                }
-            }
-        }
-
-        if (!found) {
-            cout << "No Such Elements Exist" << endl;
+        else {
+            j++;
         }
     }
 
