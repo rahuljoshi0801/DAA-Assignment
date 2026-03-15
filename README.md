@@ -1,4 +1,4 @@
-Here's the topic list from Week 1 to Week 5 based on your lab manual:
+Topic list from Week 1 to Week 5 :
 
 *Week 1 — Searching*
 - Linear Search (O(n)) — unsorted array
